@@ -1,0 +1,48 @@
+<%-include('partials/encabezado.html');%>
+<body class="container">
+    <div class="row" id="body">
+        <div id="body-content">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Tipo de servicio</th>
+                    <th>Kilowatts Consumidos</th>
+                    <th>Costo por Kilowatts</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%=nombre%></td>
+                        <td><%=tipo%></td>
+                        <td><%=kilowatts%></td>
+                        <td><%=precioKilowatt%></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Subtotal:</td>
+                        <td><%=subtotal%></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Impuesto:</td>
+                        <td><%=impuesto%></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Descuento:</td>
+                        <td><%=descuento%></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total a pagar:</td>
+                        <td><%=total%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%-include('partials/piePagina.html');%>
+</body>

@@ -1,0 +1,115 @@
+<%-include('partials/encabezado.html');%>
+<body class="container">
+    <div class="row" id="body">
+        <div id="body-content">
+            <br>
+            <form action="/luz" method="post">
+                <%
+                    let precioKilowatt = 0;
+                    let subtotal = 0;
+                    let impuesto = 0;
+                    let descuento = 0;
+                    let total = 0;
+                %>
+                <fieldset>
+                    <label for="recibo">Numero Recibo</label> <input type="number" id="recibo" name="recibo" required value="<%=recibo%>">
+                    <label for="nombre">Nombre</label> <input type="text" id="nombre" name="nombre" required value="<%=nombre%>">
+                    <label for="domicilio">Domicilio</label> <input type="text" id="domicilio" name="domicilio" required value="<%=domicilio%>">
+                    <label for="tipo">Tipo de servicio</label>
+                    <select name="tipo" id="tipo" required>
+                        <option value="Doméstico" <%if(tipo=='Doméstico'){%>selected<%}%>>Doméstico</option>
+                        <option value="Comercial" <%if(tipo=='Comercial'){%>selected<%}%>>Comercial</option>
+                        <option value="Industrial" <%if(tipo=='Industrial'){%>selected<%}%>>Industrial</option>
+                    </select>
+                    <label for="kilowatts">Kilowatts Consumidos</label> <input type="number" id="kilowatts" name="kilowatts" required value="<%=kilowatts%>">
+                </fieldset>
+                <hr>
+                <button type="submit" class="btn btn-outline-primary" onclick="valores()">Enviar Información</button>
+                <button type="reset" class="btn btn-outline-danger" id="reset">Limpiar</button>
+                <br>
+                <br>
+            </form>
+            <%
+                if(tipo == 'Doméstico'){
+                    precioKilowatt = 1.08;
+                    subtotal = parseFloat(precioKilowatt) * parseFloat(kilowatts);
+                    impuesto = subtotal * 0.16;
+                    if(kilowatts < 1001){
+                        descuento = subtotal * 0.10;
+                    } else if(kilowatts < 10001){
+                        descuento = subtotal * 0.20;
+                    } else {
+                        descuento = subtotal * 0.50;
+                    }
+                    total = parseFloat(impuesto) + parseFloat(subtotal) - parseFloat(descuento);
+                } else if(tipo == 'Comercial'){
+                    precioKilowatt = 2.50;
+                    subtotal = precioKilowatt * kilowatts;
+                    impuesto = subtotal * 0.16;
+                    if(kilowatts < 1001){
+                        descuento = subtotal * 0.10;
+                    } else if(kilowatts < 10001){
+                        descuento = subtotal * 0.20;
+                    } else {
+                        descuento = subtotal * 0.50;
+                    }
+                    total = parseFloat(impuesto) + parseFloat(subtotal) - parseFloat(descuento);
+                } else if(tipo == 'Industrial'){
+                    precioKilowatt = 3.00;
+                    subtotal = precioKilowatt * kilowatts;
+                    impuesto = subtotal * 0.16;
+                    if(kilowatts < 1001){
+                        descuento = subtotal * 0.10;
+                    } else if(kilowatts < 10001){
+                        descuento = subtotal * 0.20;
+                    } else {
+                        descuento = subtotal * 0.50;
+                    }
+                    total = parseFloat(impuesto) + parseFloat(subtotal) - parseFloat(descuento);
+                } 
+            %>
+            <br>
+        </div>
+        <table class="table table-dark table-striped">
+            <thead>
+                <th>Nombre</th>
+                <th>Tipo de servicio</th>
+                <th>Kilowatts Consumidos</th>
+                <th>Costo por Kilowatts</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%=nombre%></td>
+                    <td><%=tipo%></td>
+                    <td><%=kilowatts%></td>
+                    <td><%=precioKilowatt%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Subtotal:</td>
+                    <td><%=subtotal%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Impuesto:</td>
+                    <td><%=impuesto%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Descuento:</td>
+                    <td><%=descuento%></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total a pagar:</td>
+                    <td><%=total%></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <%-include('partials/piePagina.html');%>
+</body>

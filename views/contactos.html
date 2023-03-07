@@ -1,0 +1,33 @@
+<%-include('partials/encabezado.html');%>
+<body class="container">
+    <div class="row" id="body">
+        <div id="body-content">
+            <br>
+            <form action="2020030223@upsin.edu.mx" method="get">
+                <section>
+                    <center>
+                        <h2>¡Contactános!</h2>
+                        <h4>En nuestra empresa siempre estamos dispuestos a escuchar a nuestros clientes y futuros socios.</h4>
+                        <br>
+                        <br>
+                        <label for="Nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" required="true" placeholder="Captura tu nombre">
+                        <br>
+                        <br>
+                        <label for="Correo">Correo</label>
+                        <input type="email" name="correo" id="correo" required="true" placeholder="Captura tu correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <br>
+                        <br>
+                        <textarea name="comentarios" id="comentarios" cols="30" rows="10" placeholder="Escribe aquí tus comentarios"></textarea>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-outline-primary" id="submit">Enviar Información</button>
+                        <button type="reset" class="btn btn-outline-danger" id="reset">Limpiar</button>
+                    </center>
+                </section>
+            </form>
+            <br>
+        </div>
+    </div>
+    <%-include('partials/piePagina.html');%>
+</body>
