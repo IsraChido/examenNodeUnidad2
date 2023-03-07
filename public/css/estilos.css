@@ -1,0 +1,44 @@
+.row {
+    background-color: turquoise;
+}
+
+footer .row{
+    background-color: lightcoral;
+}
+
+#body {
+    background-color: rgb(253, 255, 150);
+}
+
+#body-content{
+    margin-left: 2%;
+}
+
+table{
+    padding-bottom: 5%;
+}
+
+label {
+    display: block;
+}
+
+#nombre, #domicilio {
+    width: 40%;
+}
+
+#encabezado{
+    padding: 2rem;
+}
+
+body{
+    background-color: lightgoldenrodyellow;
+}
+
+button{
+    margin-right: 1em;
+}
+
+img{
+    max-height: 200px;
+    padding-top: 20px;
+}
